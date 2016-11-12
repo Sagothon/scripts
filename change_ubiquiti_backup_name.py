@@ -1,3 +1,5 @@
+#komentarz
+
 import os, re, glob
 
 
