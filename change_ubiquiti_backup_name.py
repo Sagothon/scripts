@@ -1,4 +1,4 @@
-#komentarz
+#script changes name of ubiquiti backup file to name of device from backup
 
 import os, re, glob
 
