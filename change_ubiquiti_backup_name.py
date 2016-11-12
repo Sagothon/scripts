@@ -3,7 +3,7 @@
 import os, re, glob
 
 
-list_of_files = glob.glob('./Szkielet/*.cfg')  # list of cfg files  trzeba zmieniac ukosnik w zaleznowsci od systemu
+list_of_files = glob.glob('./*.cfg')  # list of cfg files  trzeba zmieniac ukosnik w zaleznowsci od systemu
 
 match_string = "resolv.host.1.name" #searched phrase
 
