@@ -1,0 +1,11 @@
+#!/bin/bash
+
+usr=$1
+pass=$2
+hostname='192.168.88.1'
+port=9922
+
+sshpass -p $pass ssh -o StrictHostKeyChecking=no $usr@$hostname -p $port << EOF
+  ls -l
+  exit
+EOF
