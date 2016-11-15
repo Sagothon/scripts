@@ -3,7 +3,7 @@
 import os, re, glob
 
 
-list_of_files = glob.glob('./*')  # list of cfg files 
+list_of_files = glob.glob('./*')  # list of backup files to rename 
 
 match_string = "resolv.host.1.name" #searched phrase
 
