@@ -2,10 +2,11 @@
 
 usr=$1
 pass=$2
-hostname='192.168.88.1'
-port=9922
+host='192.168.5.'
+port=$3
 
-sshpass -p $pass ssh -o StrictHostKeyChecking=no $usr@$hostname -p $port << EOF
-  ls -l
-  exit
-EOF
+for i in `seq 1 255`;
+do
+	echo $i
+	sshpass -p $pass scp -o ConnectTimeout=1 -o StrictHostKeyChecking=no -P $port $usr@$host$i:/tmp/system.cfg ~/backup/$i
+done    
