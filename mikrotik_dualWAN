@@ -1,0 +1,33 @@
+:local ping1 [ping interface=ether1_WAN1 8.8.4.4 interval=1000ms count=3];
+
+:if ($ping1 = 0) do={
+log info WAN1_DOWN;
+    
+:local x [ip route get number=1 disabled];
+:if ($x = false) do={
+
+/ip route set [find comment="WAN1"] disabled=yes;
+/ip route set [find comment="WAN2"] disabled=no;
+/ip firewall connection tracking set enabled=no;
+:delay 10;
+ /ip firewall connection tracking set enabled=yes;
+}
+}
+
+delay 5;
+
+:local ping2 [ping interface=ether2_WAN2 31.192.120.36 interval=1000ms count=3];
+
+:if ($ping2 = 0) do={
+log info WAN2_DOWN;
+
+:local x [ip route get number=0 disabled];
+:if ($x = false) do={
+
+/ip route set [find comment="WAN1"] disabled=no;
+/ip route set [find comment="WAN2"] disabled=yes;
+/ip firewall connection tracking set enabled=no;
+:delay 10;
+/ip firewall connection tracking set enabled=yes;
+}
+}
